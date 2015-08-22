@@ -1,0 +1,5 @@
+<button type="button" ng-click="vm.openFilter()">Open filter</button>
+<div ng-if="vm.isOpen">
+  <button type="button" ng-click="vm.closeFilter()">Close filter</button>
+  <div ng-transclude></div>
+</div>

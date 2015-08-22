@@ -1,0 +1,50 @@
+<html ng-app="ngFilterSortExample">
+<head>
+  <title>ng-filter-sort example</title>
+  <script src="https://code.angularjs.org/1.4.4/angular.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body ng-controller="mainCtrl as vm">
+<div class="container-fluid">
+  <div class="row">
+    <ng-filter-sort-input filter-sort-id="{{vm.filterSortID}}" filter-id="search"></ng-filter-sort-input>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Type
+          <ng-filter-sort-checkbox filter-sort-id="{{vm.filterSortID}}" filter-id="type"
+                                   filter-items="vm.types"></ng-filter-sort-checkbox>
+        </th>
+        <th>Date <!--ng-filter-sort-custom filter-sort-id="{{vm.filterSortID}}" filter-id="date">
+          <input type="text" ng-model="vm.date"/>
+        </ng-filter-sort-custom--></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="item in vm.items">
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.type}}</td>
+        <td>{{item.date}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+
+  </div>
+</div>
+<script src="../lib/ng_filter_sort_main.js"></script>
+<script src="../lib/ng_filter_sort_service.js"></script>
+<script src="../lib/ng_filter_sort_checkbox_directive.js"></script>
+<script src="../lib/ng_filter_sort_input_directive.js"></script>
+<script src="../lib/ng_filter_sort_custom_directive.js"></script>
+<script src="../lib/ng_filter_sort_utils.js"></script>
+<script src="./app.js"></script>
+
+</body>
+</html>
