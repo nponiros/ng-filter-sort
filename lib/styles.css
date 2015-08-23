@@ -1,0 +1,30 @@
+.popup-wrapper {
+  padding: 15px 20px;
+  position: relative;
+  text-align: center;
+  width: 200px;
+}
+
+.popup-wrapper .popup {
+  display: block;
+  margin-bottom: 15px;
+  padding: 20px;
+  position: absolute;
+  width: 100%;
+  top: 45px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.popup-wrapper .popup:before {
+  border-left: solid transparent 10px;
+  border-right: solid transparent 10px;
+  border-bottom: solid black 10px;
+  top: -10px;
+  content: " ";
+  height: 0;
+  left: 50%;
+  margin-left: -13px;
+  position: absolute;
+  width: 0;
+}

@@ -12,16 +12,9 @@
 
     var filterSortConfig = {
       filterFns: [{filterID: 'type', fn: function(currentItem, filterItem) {
-        if (filterItem.checked) {
-          return currentItem.type === filterItem.name;
-        } else {
-          return false;
-        }
+        return currentItem.type === filterItem.name;
       }}, {
         filterID: 'search', fn: function(currentItem, filterItem) {
-          if (filterItem === '') {
-            return true;
-          }
           var filterItems = filterItem.split(' ');
           return filterItems.some(function(item) {
             return currentItem.title.toLowerCase().indexOf(item.toLowerCase()) !== -1;
@@ -37,15 +30,26 @@
           //return currentItem.date === filterItem;
         }
       }*/],
-      sortFns: [],
-      doneCB: filteringDoneCB,
+      sortFns: [{
+        sorterId: 'title',
+        fn: function(a, b) {
+          if (a.title > b.title) {
+            return 1;
+          } else if (a.title < b.title) {
+            return -1;
+          } else {
+            return 0;
+          }
+        }
+      }],
+      doneCB: doneCB,
       list: this.items
     };
     this.filterSortID = 'example';
     var filterSortInstance = ngFilterSortService.getNewInstance(this.filterSortID, filterSortConfig);
 
-    function filteringDoneCB(filteredItems) {
-      self.items = filteredItems;
+    function doneCB(list) {
+      self.items = list;
     }
   }
 
